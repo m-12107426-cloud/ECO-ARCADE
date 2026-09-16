@@ -25,6 +25,37 @@
 <script defer="" src="app-polish.js"></script>
 </head>
 <body>
+<div class="login-overlay" id="login-overlay" role="dialog" aria-modal="true" aria-labelledby="login-title">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-icon">♻</div>
+      <small class="login-subtitle">ECO ARCADE V10 • ACCESS GATEWAY</small>
+      <h2 id="login-title" data-i18n="loginTitle">Sila Log Masuk</h2>
+      <p data-i18n="loginSub">Masukkan nama pengguna dan kata laluan untuk mengakses platform.</p>
+    </div>
+    <form class="login-form" id="login-form">
+      <div class="login-field">
+        <label for="login-username" data-i18n="loginUserLabel">Nama Pengguna</label>
+        <div class="input-wrap">
+          <span class="field-icon">👤</span>
+          <input type="text" id="login-username" autocomplete="username" required placeholder="KUMP84DWIN" />
+        </div>
+      </div>
+      <div class="login-field">
+        <label for="login-password" data-i18n="loginPassLabel">Kata Laluan</label>
+        <div class="input-wrap">
+          <span class="field-icon">🔑</span>
+          <input type="password" id="login-password" autocomplete="current-password" required placeholder="••••••••••••" />
+          <button type="button" class="toggle-pass" id="toggle-pass" aria-label="Tunjukkan kata laluan">👁</button>
+        </div>
+      </div>
+      <p class="login-error hidden" id="login-error" role="alert" data-i18n="loginError"></p>
+      <button type="submit" class="button button-primary login-btn" id="login-btn">
+        <span data-i18n="loginSubmit">LOG MASUK</span> <i>→</i>
+      </button>
+    </form>
+  </div>
+</div>
 <a class="skip-link" data-i18n="skip" href="#main">Langkau ke kandungan</a>
 <div aria-hidden="true" class="boot" id="boot"><div class="boot-mark"><span>♻</span></div><strong>ECO ARCADE <i>V10</i></strong><div class="boot-track"><i></i></div></div>
 <canvas aria-hidden="true" id="ambient-canvas"></canvas>
