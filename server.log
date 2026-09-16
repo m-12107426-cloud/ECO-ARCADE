@@ -1,0 +1,8 @@
+127.0.0.1 - - [16/Sep/2026 12:09:06] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 12:09:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 12:09:38] "GET /styles-v10.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 12:09:38] "GET /styles-polish.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 12:09:38] "GET /app-v10.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 12:09:38] "GET /app-polish.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 12:09:38] code 404, message File not found
+127.0.0.1 - - [16/Sep/2026 12:09:38] "GET /.netlify/scripts/hud?variant=public HTTP/1.1" 404 -
