@@ -410,6 +410,11 @@ body.motion-full .value-card:hover {
   box-shadow: 10px 10px 0 var(--ink), 0 0 25px rgba(242,122,59,0.2);
 }
 
+/* ---------- Boot Screen Z-Index Override ---------- */
+.boot {
+  z-index: 20000 !important;
+}
+
 /* ---------- Login Gate Overlay ---------- */
 .login-overlay {
   position: fixed;
@@ -426,7 +431,9 @@ body.motion-full .value-card:hover {
   transition: opacity 0.45s var(--ease), visibility 0.45s;
 }
 
+html.is-authenticated .login-overlay,
 .login-overlay.authenticated {
+  display: none !important;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

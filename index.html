@@ -20,7 +20,12 @@
 <link href="manifest.webmanifest" rel="manifest"/>
 <link href="styles-v10.css" rel="stylesheet"/>
 <link href="styles-polish.css" rel="stylesheet"/>
-<script>document.documentElement.classList.replace('no-js','js')</script>
+<script>
+  document.documentElement.classList.replace('no-js','js');
+  if (sessionStorage.getItem('ecoArcadeV10Auth') === 'true') {
+    document.documentElement.classList.add('is-authenticated');
+  }
+</script>
 <script defer="" src="app-v10.js"></script>
 <script defer="" src="app-polish.js"></script>
 </head>
