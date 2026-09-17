@@ -331,6 +331,28 @@ dialog[open]{animation:pPop .38s var(--ease) both}
 .motion-button{transition:transform .28s var(--spring),background .28s,box-shadow .28s}
 .motion-button:hover{transform:translateY(-2px);box-shadow:0 12px 22px -14px rgba(19,59,50,.9)}
 
+.logout-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  color: var(--ink);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.28s var(--spring), background 0.28s, box-shadow 0.28s, border-color 0.28s;
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange);
+  background: rgba(242, 122, 59, 0.15);
+  box-shadow: 0 12px 22px -14px rgba(242, 122, 59, 0.8);
+}
+
 /* U+25C8 is missing from many system fonts (it showed as a tofu box in the
    learn chips and build-guide rules), so it is drawn with CSS instead. */
 .project-learn>i:first-child{position:relative;display:inline-block;width:9px;height:9px;margin-right:7px;font-size:0}

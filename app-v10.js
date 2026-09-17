@@ -1218,6 +1218,7 @@ function initLoginGate() {
 	const overlay = $('#login-overlay'), form = $('#login-form');
 	const userInput = $('#login-username'), passInput = $('#login-password');
 	const errorEl = $('#login-error'), toggleBtn = $('#toggle-pass');
+	const logoutBtn = $('#logout-button');
 
 	if (!overlay || !form) return;
 
@@ -1242,16 +1243,25 @@ function initLoginGate() {
 			sessionStorage.setItem('ecoArcadeV10Auth', 'true');
 			overlay.classList.add('authenticated');
 			errorEl.classList.add('hidden');
+			passInput.value = '';
 			toast(tr('Log masuk berjaya! Selamat datang.', 'Login successful! Welcome.'));
-			// Set the default player name if empty
 			if (!storage.get(STORE.name, '')) {
-				syncName('KUMP84DWIN', userInput);
+				syncName(user, userInput);
 			}
 		} else {
 			errorEl.classList.remove('hidden');
 			errorEl.textContent = tr('Nama pengguna atau kata laluan salah. Sila cuba lagi.', 'Invalid username or password. Please try again.');
 			audioBeep(160, 0.15, 'sawtooth');
 		}
+	});
+
+	logoutBtn?.addEventListener('click', () => {
+		sessionStorage.removeItem('ecoArcadeV10Auth');
+		overlay.classList.remove('authenticated');
+		userInput.value = '';
+		passInput.value = '';
+		errorEl.classList.add('hidden');
+		toast(tr('Anda telah log keluar.', 'You have logged out.'));
 	});
 }
 
