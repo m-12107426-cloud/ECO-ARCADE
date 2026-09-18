@@ -11,7 +11,7 @@ let motionOff=(animationMode===2);
 /* ============ English dictionary (V10) ============
    Malay is the source language stored in the HTML; this dict is the EN mirror.
    Every data-i18n key used in index.html must exist here.                */
-const EN={skip:'Skip to content',loginTitle:'Please Log In',loginSub:'Enter your username and password to access the platform.',loginUserLabel:'Username',loginPassLabel:'Password',loginError:'Invalid username or password. Please try again.',loginSubmit:'LOG IN',navProjects:'DIY Projects',navGames:'Mini-Games',navHow:'How it works',navValues:'Good Values',navReflect:'Reflection',
+const EN={skip:'Skip to content',navProjects:'DIY Projects',navGames:'Mini-Games',navHow:'How it works',navValues:'Good Values',navReflect:'Reflection',
 heroKicker:'PBL PROJECT \u2022 SMK SSAAS',heroOne:'Build arcades',heroTwo:'out of',heroThree:'waste.',
 heroLead:'Eight real games built from discarded material — plus three digital twins that run on the same physics.',
 explore:'See the 8 builds',playNow:'Enter the arcade',projectsStat:'recycled builds',reuseStat:'material reused',learningStat:'digital twins',scroll:'SCROLL TO START',
@@ -1213,57 +1213,3 @@ $('#reflection-text').addEventListener('input',e=>$('#char-count').textContent=`
 $('#export-data').addEventListener('click',()=>{const payload={version:10,exportedAt:new Date().toISOString(),scores:storage.get(STORE.scores,[]),reflections:storage.get(STORE.refs,[]),achievements:storage.get(STORE.achievements,[])};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='eco-arcade-v10-my-data.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),600)});$('#clear-data').addEventListener('click',()=>$('#clear-dialog').showModal());$('#confirm-clear').addEventListener('click',()=>{[STORE.name,STORE.scores,STORE.refs,STORE.achievements,STORE.towerBest].forEach(k=>storage.remove(k));$$('.player-name').forEach(i=>i.value='');$('#reflection-name').value='';towerBest=0;resetRun();resetRush();resetTower();renderCommunity();renderAchievements();toast(tr('Data setempat dipadam','Local data cleared'))});
 /* Lifecycle and initial state */
 document.addEventListener('visibilitychange',()=>{if(document.hidden){pauseRun('hidden');pauseRush('hidden');pauseTower('hidden')}else drawAmbient()});addEventListener('pagehide',()=>{cancelAnimationFrame(runRAF);cancelAnimationFrame(towerRAF);cancelAnimationFrame(rushRAF);cancelAnimationFrame(ambient.raf)});if('serviceWorker'in navigator&&location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}),{once:true});
-/* ============ Login Gate System ============ */
-function initLoginGate() {
-	const overlay = $('#login-overlay'), form = $('#login-form');
-	const userInput = $('#login-username'), passInput = $('#login-password');
-	const errorEl = $('#login-error'), toggleBtn = $('#toggle-pass');
-	const logoutBtn = $('#logout-button');
-
-	if (!overlay || !form) return;
-
-	const isAuth = sessionStorage.getItem('ecoArcadeV10Auth') === 'true';
-	if (isAuth) {
-		overlay.classList.add('authenticated');
-	}
-
-	toggleBtn?.addEventListener('click', () => {
-		const isPass = passInput.type === 'password';
-		passInput.type = isPass ? 'text' : 'password';
-		toggleBtn.textContent = isPass ? '🙈' : '👁';
-		toggleBtn.setAttribute('aria-label', isPass ? tr('Sembunyikan kata laluan', 'Hide password') : tr('Tunjukkan kata laluan', 'Show password'));
-	});
-
-	form.addEventListener('submit', (e) => {
-		e.preventDefault();
-		const user = userInput.value.trim();
-		const pass = passInput.value.trim();
-
-		if (user === 'KUMP84DWIN' && pass === 'WECANW1NGENG') {
-			sessionStorage.setItem('ecoArcadeV10Auth', 'true');
-			overlay.classList.add('authenticated');
-			errorEl.classList.add('hidden');
-			passInput.value = '';
-			toast(tr('Log masuk berjaya! Selamat datang.', 'Login successful! Welcome.'));
-			if (!storage.get(STORE.name, '')) {
-				syncName(user, userInput);
-			}
-		} else {
-			errorEl.classList.remove('hidden');
-			errorEl.textContent = tr('Nama pengguna atau kata laluan salah. Sila cuba lagi.', 'Invalid username or password. Please try again.');
-			audioBeep(160, 0.15, 'sawtooth');
-		}
-	});
-
-	logoutBtn?.addEventListener('click', () => {
-		sessionStorage.removeItem('ecoArcadeV10Auth');
-		overlay.classList.remove('authenticated');
-		userInput.value = '';
-		passInput.value = '';
-		errorEl.classList.add('hidden');
-		toast(tr('Anda telah log keluar.', 'You have logged out.'));
-	});
-}
-
-translateStatic();resetRun();resetRush();resetTower();renderCommunity();renderAchievements();activateGame('run');initLoginGate();
-})();

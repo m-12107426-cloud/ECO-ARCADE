@@ -20,47 +20,11 @@
 <link href="manifest.webmanifest" rel="manifest"/>
 <link href="styles-v10.css" rel="stylesheet"/>
 <link href="styles-polish.css" rel="stylesheet"/>
-<script>
-  document.documentElement.classList.replace('no-js','js');
-  if (sessionStorage.getItem('ecoArcadeV10Auth') === 'true') {
-    document.documentElement.classList.add('is-authenticated');
-  }
-</script>
+<script>document.documentElement.classList.replace('no-js','js')</script>
 <script defer="" src="app-v10.js"></script>
 <script defer="" src="app-polish.js"></script>
 </head>
 <body>
-<div class="login-overlay" id="login-overlay" role="dialog" aria-modal="true" aria-labelledby="login-title">
-  <div class="login-card">
-    <div class="login-header">
-      <div class="login-icon">♻</div>
-      <small class="login-subtitle">ECO ARCADE V10 • ACCESS GATEWAY</small>
-      <h2 id="login-title" data-i18n="loginTitle">Sila Log Masuk</h2>
-      <p data-i18n="loginSub">Masukkan nama pengguna dan kata laluan untuk mengakses platform.</p>
-    </div>
-    <form class="login-form" id="login-form">
-      <div class="login-field">
-        <label for="login-username" data-i18n="loginUserLabel">Nama Pengguna</label>
-        <div class="input-wrap">
-          <span class="field-icon">👤</span>
-          <input type="text" id="login-username" autocomplete="username" required placeholder="Masukkan nama" />
-        </div>
-      </div>
-      <div class="login-field">
-        <label for="login-password" data-i18n="loginPassLabel">Kata Laluan</label>
-        <div class="input-wrap">
-          <span class="field-icon">🔑</span>
-          <input type="password" id="login-password" autocomplete="current-password" required placeholder="••••••••••••" />
-          <button type="button" class="toggle-pass" id="toggle-pass" aria-label="Tunjukkan kata laluan">👁</button>
-        </div>
-      </div>
-      <p class="login-error hidden" id="login-error" role="alert" data-i18n="loginError"></p>
-      <button type="submit" class="button button-primary login-btn" id="login-btn">
-        <span data-i18n="loginSubmit">LOG MASUK</span> <i>→</i>
-      </button>
-    </form>
-  </div>
-</div>
 <a class="skip-link" data-i18n="skip" href="#main">Langkau ke kandungan</a>
 <div aria-hidden="true" class="boot" id="boot"><div class="boot-mark"><span>♻</span></div><strong>ECO ARCADE <i>V10</i></strong><div class="boot-track"><i></i></div></div>
 <canvas aria-hidden="true" id="ambient-canvas"></canvas>
@@ -71,7 +35,7 @@
 <button aria-controls="nav-links" aria-expanded="false" aria-label="Buka menu" class="menu-button" id="menu-button" type="button"><i></i><i></i></button>
 <div class="nav-links" id="nav-links">
 <a data-i18n="navProjects" href="#projects">Projek DIY</a><a data-i18n="navGames" href="#games">Permainan Mini</a><a data-i18n="navHow" href="#how">Cara Ia Berfungsi</a><a data-i18n="navValues" href="#values">Nilai Murni</a><a data-i18n="navReflect" href="#reflect">Refleksi</a>
-<div class="nav-actions"><button aria-label="Jeda animasi" aria-pressed="false" class="motion-button" id="motion-button" type="button"><span>✦</span></button><button aria-label="Tukar bahasa" class="language-button" id="language-button" type="button"><span class="active">BM</span><span>EN</span></button><button aria-label="Log keluar" class="logout-button" id="logout-button" type="button"><span aria-hidden="true">🚪</span><small data-i18n="logout">LOG KELUAR</small></button></div>
+<div class="nav-actions"><button aria-label="Jeda animasi" aria-pressed="false" class="motion-button" id="motion-button" type="button"><span>✦</span></button><button aria-label="Tukar bahasa" class="language-button" id="language-button" type="button"><span class="active">BM</span><span>EN</span></button></div>
 </div></nav></header>
 <main id="main">
 <section class="hero" id="home">
